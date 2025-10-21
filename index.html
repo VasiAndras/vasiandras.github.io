@@ -3,128 +3,306 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My GitHub Page</title>
+  <title>Vasi András – Resume</title>
   <style>
-    /* Reset and fonts */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --primary: #2c3e50;
+      --secondary: #34495e;
+      --accent: #27ae60;
+      --bg: #f8f9fa;
+      --text: #2d3436;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
       line-height: 1.6;
-      background: linear-gradient(120deg, #e0eafc, #cfdef3);
-      color: #333;
     }
 
-    /* Navbar */
-    header {
-      background: #1e293b;
-      color: #fff;
-      padding: 1rem 2rem;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-    }
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    .container {
       max-width: 1100px;
-      margin: auto;
+      margin: 40px auto;
+      background: white;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      display: grid;
+      grid-template-columns: 1fr 2fr;
     }
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      margin: 0 1rem;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
-    nav a:hover { color: #38bdf8; }
 
-    /* Hero Section */
-    .hero {
+    /* Prevent overflow and long words from breaking layout */
+    img, video, svg {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    p, li {
+      word-wrap: break-word;
+      overflow-wrap: anywhere;
+    }
+
+    /* LEFT PANEL */
+    .sidebar {
+      background: var(--primary);
+      color: white;
+      padding: 40px 30px;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
-      height: 80vh;
       text-align: center;
-      padding: 2rem;
     }
-    .hero h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
-      color: #1e293b;
+
+    .sidebar img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      margin-bottom: 20px;
+      object-fit: cover;
+      border: 3px solid white;
     }
-    .hero p {
-      font-size: 1.2rem;
-      max-width: 600px;
+
+    .sidebar h1 {
+      font-size: 1.6em;
+      margin-bottom: 10px;
     }
-    .btn {
-      margin-top: 2rem;
-      background: #38bdf8;
-      color: #fff;
-      padding: 0.8rem 1.5rem;
-      border-radius: 30px;
+
+    .sidebar p {
+      font-size: 0.95em;
+      margin-bottom: 25px;
+      opacity: 0.9;
+    }
+
+    .contact {
+      font-size: 0.9em;
+      line-height: 1.8;
+      text-align: left;
+    }
+
+    .contact a {
+      color: white;
       text-decoration: none;
-      font-size: 1rem;
-      transition: background 0.3s;
-    }
-    .btn:hover { background: #0284c7; }
-
-    /* About Section */
-    .about {
-      max-width: 1100px;
-      margin: auto;
-      padding: 4rem 2rem;
-      text-align: center;
-    }
-    .about h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-      color: #1e293b;
-    }
-    .about p {
-      font-size: 1.1rem;
-      color: #444;
     }
 
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 2rem;
-      background: #1e293b;
-      color: #fff;
-      margin-top: 3rem;
+    .contact a:hover {
+      text-decoration: underline;
+    }
+
+    /* RIGHT CONTENT */
+    .content {
+      padding: 40px;
+    }
+
+    h2 {
+      color: var(--accent);
+      border-bottom: 2px solid var(--accent);
+      margin-bottom: 10px;
+      padding-bottom: 4px;
+      font-size: 1.2em;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    section {
+      margin-bottom: 25px;
+    }
+
+    .content p, li {
+      font-size: 0.95em;
+      margin-bottom: 6px;
+    }
+
+    ul {
+      list-style-type: disc;
+      margin-left: 20px;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        grid-template-columns: 1fr;
+      }
+      .sidebar {
+        text-align: center;
+      }
+      .contact {
+        text-align: center;
+      }
+    }
+    /* Larger screens: two-column but allow sidebar to shrink */
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .container {
+        grid-template-columns: 1fr 2fr;
+        margin: 30px auto;
+      }
+      .sidebar {
+        padding: 30px 20px;
+      }
+      .content {
+        padding: 30px;
+      }
+    }
+
+    /* Small phones */
+    @media (max-width: 480px) {
+      body {
+        font-size: 14px;
+      }
+      .container {
+        margin: 12px;
+        box-shadow: none;
+      }
+      .sidebar img {
+        width: 110px;
+        height: 110px;
+      }
+      .sidebar {
+        padding: 20px 12px;
+      }
+      .content {
+        padding: 18px 12px;
+      }
+      h2 {
+        font-size: 1em;
+      }
+      .contact p {
+        line-height: 1.4;
+      }
+    }
+
+    /* Improve content flow on medium screens */
+    @media (max-width: 992px) and (min-width: 769px) {
+      .container {
+        grid-template-columns: 1fr 2fr;
+      }
+      .sidebar img {
+        width: 120px;
+        height: 120px;
+      }
+    }
+
+    /* Print styles: single column, remove decoration, fit A4 */
+    @media print {
+      :root {
+        --bg: white;
+      }
+      html, body {
+        background: white;
+        color: #000;
+      }
+      .container {
+        max-width: 800px; /* common printable width */
+        margin: 10mm auto;
+        box-shadow: none;
+        display: block;
+        grid-template-columns: none;
+        page-break-inside: avoid;
+      }
+      .sidebar {
+        background: none;
+        color: #000;
+        padding: 10px 0;
+        text-align: left;
+      }
+      .sidebar img {
+        float: right;
+        margin: 0 0 10px 10px;
+        width: 100px;
+        height: auto;
+        border: none;
+      }
+      .contact a {
+        color: #000;
+        text-decoration: none;
+      }
+      h2 {
+        color: #000;
+        border-bottom: 1px solid #000;
+      }
+      .content {
+        padding: 0;
+      }
+      section {
+        page-break-inside: avoid;
+      }
     }
   </style>
 </head>
 <body>
-  <header>
-    <nav>
-      <h2>MySite</h2>
-      <div>
-        <a href="#hero">Home</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
+
+  <div class="container">
+    <aside class="sidebar">
+      <img src="resources/profile.JPG" alt="Vasi András photo">
+      <h1>Vasi András</h1>
+
+      <div class="contact">
+        <p><strong>Phone / WhatsApp:</strong><br> First use e-mail </p>
+        <p><strong>E-mail:</strong><br> 
+          <a href="mailto:vasi.a.andras@gmail.com">vasi.a.andras@gmail.com</a><br>
+          <a href="mailto:vasi.andras@student.ms.sapientia.ro">vasi.andras@student.ms.sapientia.ro</a>
+        </p>
+        <p><strong>Web:</strong><br> 
+          <a href="https://linkedin.com/in/vasiandras/" target="_blank">linkedin.com/in/vasiandras/</a>
+        </p>
       </div>
-    </nav>
-  </header>
+    </aside>
 
-  <section class="hero" id="hero">
-    <h1>Welcome to My GitHub Page</h1>
-    <p>This is my personal site hosted on GitHub Pages. Here you’ll find my projects, ideas, and experiments.</p>
-    <a href="#about" class="btn">Learn More</a>
-  </section>
+    <main class="content">
+      <section>
+        <h2>Education</h2>
 
-  <section class="about" id="about">
-    <h2>About Me</h2>
-    <p>
-      Hi! I’m a developer passionate about coding, technology, and building cool projects. 
-      This site is a space where I share my work and learning journey. TEST
-    </p>
-  </section>
+        <div class="education-entry"></div>
+          <h3><strong>MSc, Intelligent Control Systems</strong></h3>
+        <p><strong>High school (2016 &gt; 2020)</strong><br>
+        I studied mathematics and informatics and graduated from the <em>Salamon Ernő High School</em> in Gyergyószentmiklós.</p>
+      </section>
 
-  <footer id="contact">
-    <p>© 2025 My GitHub Page | Built with ❤️ on GitHub Pages</p>
-  </footer>
+      <section>
+        <h2>Profile</h2>
+        <p>I was born in Gyergyószentmiklós in 2001, I spent my childhood in Gyergyóújfalu, Hargita County. I volunteered several times at a cultural foundation in Gyergyószentmiklós and Gyergyóújfalu. I danced in a folk dance group for years.</p>
+
+        <p>I am interested in natural sciences, IT, IoT, innovation technologies, e-mobility and renewable energy. In my free time, I do research within the framework of the university. I have experience in installing water and electricity. I have knowledge of solar systems.</p>
+
+        <p>In the summer of 2022, I completed a summer internship at <strong>FOMCO SOLAR SYSTEMS</strong> in Maroskeresztúr, in solar parks.</p>
+
+        <p>In the summer of 2023, I completed a summer internship at <strong>Accenture Industrial Software Solutions</strong> in Marosvásárhely.</p>
+
+        <p>I am working at <strong>Accenture Industry X</strong> since 2024 January as programmer.</p>
+      </section>
+
+      <section>
+        <h2>Skills</h2>
+        <p><strong>Languages:</strong> Hungarian, Romanian, English</p>
+        <p><strong>Programming:</strong> C, C++, Python, OOP</p>
+        <p><strong>Office:</strong> Proficient in Microsoft Word, Excel and PowerPoint</p>
+        <p><strong>3D Modeling:</strong> Basic knowledge in Autodesk Inventor</p>
+      </section>
+
+      <section>
+        <h2>Research</h2>
+        <p>Vein segmentation with infrared camera technologies.<br>
+        I currently work as a member of a team on an industrial project with support of <strong>Accenture</strong> in Marosvásárhely.</p>
+      </section>
+
+      <section>
+        <h2>Competitions</h2>
+        <p><strong>Revolutionize Industry with IoT:</strong> Academy and Masterclass – Home automatization competition organized by Accenture (2023 February, Marosvásárhely): <strong>1<sup>st</sup> placed</strong></p>
+
+        <p><strong>SapiLine Tracer:</strong> Line tracking robot design and building practice by Accenture (2024 April, Marosvásárhely): <strong>1<sup>st</sup> placed</strong></p>
+
+        <p><strong>Student conferences:</strong></p>
+        <ul>
+          <li>TDK – Sapientia EMTE (2023 May, Marosvásárhely): <strong>2<sup>nd</sup> placed</strong></li>
+          <li>MTDK – Hungarian Student Organization of Temesvár (2023 May, Temesvár): <strong>1<sup>st</sup> placed</strong></li>
+          <li>TDK – Sapientia EMTE (2024 April, Marosvásárhely): <strong>1<sup>st</sup> placed</strong></li>
+        </ul>
+      </section>
+    </main>
+  </div>
+
 </body>
 </html>
