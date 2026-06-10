@@ -1,320 +1,621 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hu">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vasi András – Resume</title>
-  <style>
-    :root {
-      --primary: #2c3e50;
-      --secondary: #34495e;
-      --accent: #27ae60;
-      --bg: #f8f9fa;
-      --text: #2d3436;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vasi András — CV</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+/* ── Reset & page ───────────────────────────────────────── */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+@page { size: A4; margin: 0; }
 
-    body {
-      font-family: "Segoe UI", Arial, sans-serif;
-      background-color: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
+html {
+  font-family: 'Segoe UI', Calibri, Arial, sans-serif;
+  font-size: 9.2pt;
+  color: #2C3E50;
+}
 
-    .container {
-      max-width: 1100px;
-      margin: 40px auto;
-      background: white;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-    }
+body {
+  width: 210mm;
+  background: white;
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+}
 
-    /* Prevent overflow and long words from breaking layout */
-    img, video, svg {
-      max-width: 100%;
-      height: auto;
-      display: block;
-    }
+/* ── Layout ─────────────────────────────────────────────── */
+.cv-wrap {
+  display: flex;
+  width: 210mm;
+  min-height: 297mm;
+}
 
-    p, li {
-      word-wrap: break-word;
-      overflow-wrap: anywhere;
-    }
+/* ── Sidebar ────────────────────────────────────────────── */
+.sidebar {
+  width: 69mm;
+  min-height: 297mm;
+  background: #1E2D40;
+  padding: 18pt 14pt;
+  color: #E8EDF5;
+  flex-shrink: 0;
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+}
 
-    /* LEFT PANEL */
-    .sidebar {
-      background: var(--primary);
-      color: white;
-      padding: 40px 30px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
+/* Photo */
+.photo-ring {
+  width: 106px; height: 106px;
+  border-radius: 50%;
+  border: 3px solid #00B4D8;
+  outline: 2.5px solid #1E2D40;
+  outline-offset: -5px;
+  margin: 0 auto 12pt;
+  display: flex; align-items: center; justify-content: center;
+  background: #2C3E50;
+  overflow: hidden;
+}
+.photo-ring img { width:100%; height:100%; object-fit:cover; }
+.photo-placeholder { font-size: 52pt; color: #8FA3B1; }
 
-    .sidebar img {
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      margin-bottom: 20px;
-      object-fit: cover;
-      border: 3px solid white;
-    }
+/* Name block */
+.sb-name {
+  text-align: center;
+  margin-bottom: 4pt;
+}
+.sb-name h1 { font-size: 16pt; font-weight: 700; color: #E8EDF5; line-height: 1.2; }
+.sb-name .job-title { font-size: 8.5pt; color: #00B4D8; font-weight: 600; margin-top: 4pt; }
+.sb-name .job-sub   { font-size: 7pt;   color: #8FA3B1; margin-top: 2pt; }
 
-    .sidebar h1 {
-      font-size: 1.6em;
-      margin-bottom: 10px;
-    }
+/* Section header */
+.sb-section { margin-top: 10pt; }
+.sb-section h2 {
+  font-size: 7pt; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.6px;
+  color: #00B4D8; margin-bottom: 3pt;
+}
+.sb-line { border: none; border-top: 0.4px solid rgba(0,180,216,0.5); margin-bottom: 6pt; }
 
-    .sidebar p {
-      font-size: 0.95em;
-      margin-bottom: 25px;
-      opacity: 0.9;
-    }
+/* Contact items */
+.contact-item { display: flex; align-items: flex-start; gap: 7pt; margin-bottom: 4pt; line-height: 1.3; }
+.contact-item i { color: #00B4D8; width: 12pt; text-align: center; flex-shrink: 0; margin-top: 1pt; }
+.contact-item span { font-size: 8pt; color: #E8EDF5; }
+.contact-item a { color: #E8EDF5; text-decoration: none; }
 
-    .contact {
-      font-size: 0.9em;
-      line-height: 1.8;
-      text-align: left;
-    }
+/* Skill bars */
+.skill-item { margin-bottom: 5pt; }
+.skill-label { font-size: 8pt; color: #E8EDF5; margin-bottom: 2pt; }
+.skill-track { height: 4pt; background: #2C3E50; border-radius: 2px; }
+.skill-fill  { height: 4pt; background: #00B4D8; border-radius: 2px; }
 
-    .contact a {
-      color: white;
-      text-decoration: none;
-    }
+/* Tech tags */
+.tags { display: flex; flex-wrap: wrap; gap: 3pt; }
+.tag {
+  background: rgba(44,62,80,0.9); color: #E8EDF5;
+  padding: 2pt 5pt; border-radius: 3px; font-size: 7pt;
+}
 
-    .contact a:hover {
-      text-decoration: underline;
-    }
+/* Dev envs text */
+.dev-envs { font-size: 8pt; color: #E8EDF5; line-height: 1.7; }
 
-    /* RIGHT CONTENT */
-    .content {
-      padding: 40px;
-    }
+/* Language dots */
+.lang-item { margin-bottom: 6pt; }
+.lang-header { display: flex; justify-content: space-between; font-size: 8pt; margin-bottom: 3pt; }
+.lang-name  { font-weight: 700; color: #E8EDF5; }
+.lang-level { font-style: italic; color: #8FA3B1; font-size: 7pt; }
+.lang-dots  { display: flex; gap: 3pt; }
+.dot { width: 8px; height: 8px; border-radius: 50%; }
+.dot.on  { background: #00B4D8; }
+.dot.off { background: #2C3E50; }
 
-    h2 {
-      color: var(--accent);
-      border-bottom: 2px solid var(--accent);
-      margin-bottom: 10px;
-      padding-bottom: 4px;
-      font-size: 1.2em;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
+/* Education summary in sidebar */
+.sb-edu-item { margin-bottom: 6pt; }
+.sb-edu-deg  { font-size: 7.5pt; font-weight: 700; color: #00B4D8; }
+.sb-edu-inst { font-size: 7.5pt; color: #E8EDF5; margin-top: 1pt; }
+.sb-edu-year { font-size: 7pt;   color: #8FA3B1; }
 
-    section {
-      margin-bottom: 25px;
-    }
+/* Interest items */
+.interest-item { display: flex; align-items: center; gap: 7pt; margin-bottom: 3pt; font-size: 8pt; color: #E8EDF5; }
+.interest-item i { color: #00B4D8; width: 12pt; text-align: center; }
 
-    .content p, li {
-      font-size: 0.95em;
-      margin-bottom: 6px;
-    }
+/* ── Main content ───────────────────────────────────────── */
+.main { flex: 1; padding: 18pt 20pt 18pt 18pt; background: #fff; }
 
-    ul {
-      list-style-type: disc;
-      margin-left: 20px;
-    }
+/* Summary box */
+.summary-box {
+  background: #E8F8FD; border: 0.5px solid rgba(0,180,216,0.3);
+  border-radius: 4px; padding: 9pt 10pt; margin-bottom: 4pt;
+  font-size: 9pt; line-height: 1.5; color: #2C3E50;
+}
 
-    @media (max-width: 768px) {
-      .container {
-        grid-template-columns: 1fr;
-      }
-      .sidebar {
-        text-align: center;
-      }
-      .contact {
-        text-align: center;
-      }
-    }
-    /* Larger screens: two-column but allow sidebar to shrink */
-    @media (min-width: 769px) and (max-width: 1024px) {
-      .container {
-        grid-template-columns: 1fr 2fr;
-        margin: 30px auto;
-      }
-      .sidebar {
-        padding: 30px 20px;
-      }
-      .content {
-        padding: 30px;
-      }
-    }
+/* Main section header */
+.main-section { margin-top: 14pt; }
+.main-section:first-child { margin-top: 0; }
+.section-heading {
+  display: flex; align-items: center; gap: 6pt;
+  font-size: 12.5pt; font-weight: 700; color: #1E2D40;
+  margin-bottom: 4pt;
+}
+.section-heading i { color: #00B4D8; font-size: 11pt; }
+.section-hr { border: none; border-top: 1.1px solid #00B4D8; margin-bottom: 6pt; }
 
-    /* Small phones */
-    @media (max-width: 480px) {
-      body {
-        font-size: 14px;
-      }
-      .container {
-        margin: 12px;
-        box-shadow: none;
-      }
-      .sidebar img {
-        width: 110px;
-        height: 110px;
-      }
-      .sidebar {
-        padding: 20px 12px;
-      }
-      .content {
-        padding: 18px 12px;
-      }
-      h2 {
-        font-size: 1em;
-      }
-      .contact p {
-        line-height: 1.4;
-      }
-    }
+/* Entry */
+.entry { margin-bottom: 6pt; padding-bottom: 6pt; border-bottom: 0.5px solid #E3EAF0; }
+.entry:last-child { border-bottom: none; }
+.entry-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 6pt; }
+.entry-title { font-size: 10.5pt; font-weight: 700; color: #1E2D40; line-height: 1.25; }
+.entry-date  { font-size: 7.5pt; color: #00B4D8; font-style: italic; white-space: nowrap; }
+.entry-org   { font-size: 8pt; color: #00B4D8; font-style: italic; margin-top: 2pt; }
+.entry-org i { font-size: 7.5pt; }
+.entry-desc  { font-size: 8.5pt; color: #2C3E50; margin-top: 4pt; line-height: 1.4; }
+.entry-desc ul { margin-left: 12pt; margin-top: 3pt; }
+.entry-desc li { margin-bottom: 2pt; }
+.entry-desc li::marker { color: #00B4D8; }
+.entry-tech { font-size: 7.5pt; color: #00B4D8; margin-top: 3pt; }
+.entry-tech i { font-size: 7pt; }
 
-    /* Improve content flow on medium screens */
-    @media (max-width: 992px) and (min-width: 769px) {
-      .container {
-        grid-template-columns: 1fr 2fr;
-      }
-      .sidebar img {
-        width: 120px;
-        height: 120px;
-      }
-    }
+/* Tech role sub-line */
+.entry-role { font-size: 7.5pt; color: #95A5A6; font-style: italic; margin-top: 1pt; }
 
-    /* Print styles: single column, remove decoration, fit A4 */
-    @media print {
-      :root {
-        --bg: white;
-      }
-      html, body {
-        background: white;
-        color: #000;
-      }
-      .container {
-        max-width: 800px; /* common printable width */
-        margin: 10mm auto;
-        box-shadow: none;
-        display: block;
-        grid-template-columns: none;
-        page-break-inside: avoid;
-      }
-      .sidebar {
-        background: none;
-        color: #000;
-        padding: 10px 0;
-        text-align: left;
-      }
-      .sidebar img {
-        float: right;
-        margin: 0 0 10px 10px;
-        width: 100px;
-        height: auto;
-        border: none;
-      }
-      .contact a {
-        color: #000;
-        text-decoration: none;
-      }
-      h2 {
-        color: #000;
-        border-bottom: 1px solid #000;
-      }
-      .content {
-        padding: 0;
-      }
-      section {
-        page-break-inside: avoid;
-      }
-    }
-  </style>
+/* Award badge */
+.badge {
+  display: inline-block; background: #FFF8E1;
+  color: rgba(30,45,64,0.85); padding: 1.5pt 4pt;
+  border-radius: 2px; font-size: 7pt; font-weight: 700; margin-left: 5pt;
+  vertical-align: middle;
+}
+
+/* Conference entry (compact) */
+.conf-entry { margin-bottom: 5pt; padding-bottom: 5pt; border-bottom: 0.5px solid #E3EAF0; }
+.conf-entry:last-child { border-bottom: none; }
+.conf-title { font-size: 9.5pt; font-weight: 700; color: #1E2D40; line-height: 1.25; }
+.conf-info  { display: flex; justify-content: space-between; align-items: center; margin-top: 2pt; }
+.conf-event { font-size: 7.5pt; color: #00B4D8; font-style: italic; }
+.conf-date  { font-size: 7.5pt; color: #95A5A6; font-style: italic; white-space: nowrap; }
+
+/* Publication entry */
+.pub-type-label {
+  font-size: 7pt; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 0.5px; color: #00B4D8; margin-top: 8pt; margin-bottom: 3pt;
+}
+.pub-type-line { border: none; border-top: 0.4px solid rgba(0,180,216,0.4); margin-bottom: 5pt; }
+
+/* Award row */
+.award-row { margin-bottom: 4pt; padding-bottom: 4pt; border-bottom: 0.5px solid #E3EAF0; }
+.award-row:last-child { border-bottom: none; }
+.award-head { display: flex; justify-content: space-between; gap: 6pt; }
+.award-name { font-size: 9.5pt; font-weight: 700; color: #1E2D40; }
+.award-prize { font-size: 7.5pt; color: #00B4D8; font-style: italic; white-space: nowrap; }
+.award-org   { font-size: 7.5pt; color: #95A5A6; font-style: italic; margin-top: 1pt; }
+
+/* Print */
+@media print {
+  body { width: 210mm; }
+  .sidebar { background: #1E2D40 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .summary-box { background: #E8F8FD !important; -webkit-print-color-adjust: exact; }
+  .skill-track { background: #2C3E50 !important; }
+  .skill-fill  { background: #00B4D8 !important; }
+  .dot.on  { background: #00B4D8 !important; }
+  .dot.off { background: #2C3E50 !important; }
+  .tag { background: rgba(44,62,80,0.9) !important; }
+  .photo-ring { background: #2C3E50 !important; }
+  .badge { background: #FFF8E1 !important; }
+  .entry, .conf-entry, .award-row { page-break-inside: avoid; }
+}
+</style>
 </head>
 <body>
+<div class="cv-wrap">
 
-  <div class="container">
-    <aside class="sidebar">
-      <img src="resources/profile.JPG" alt="Vasi András photo">
-      <h1>Vasi András</h1>
+<!-- ═══════════════════════════ SIDEBAR ═══════════════════════════ -->
+<aside class="sidebar">
 
-      <div class="contact">
-        <p><strong>Phone / WhatsApp:</strong><br> First use e-mail </p>
-        <p><strong>E-mail:</strong><br> 
-          <a href="mailto:vasi.a.andras@gmail.com">vasi.a.andras@gmail.com</a><br>
-          <a href="mailto:vasi.andras@student.ms.sapientia.ro">vasi.andras@student.ms.sapientia.ro</a>
-        </p>
-        <p><strong>Web:</strong><br> 
-          <a href="https://linkedin.com/in/vasiandras/" target="_blank">linkedin.com/in/vasiandras/</a>
-        </p>
-      </div>
-    </aside>
-
-    <main class="content">
-      <section>
-        <h2>Education</h2>
-        <h3><strong>MSc, Intelligent Control Systems</strong></h3>
-          <p><em>Sapientia – Hungarian University of Transylvania, Marosvásárhely</em> | 2024 – present</p>
-          <ul>
-            <li>Second‑year master's candidate with emphasis on control systems, IoT and embedded software.</li>
-            <li>Concurrent studies: Pedagogy Level 2.</li>
-          </ul>
-        <h3><strong>BSc, Computer Science</strong></h3>
-          <p><em>Sapientia – Hungarian University of Transylvania, Marosvásárhely</em> | 2020 – 2024</p>
-          <ul>
-            <li>Concurrent studies: Pedagogy Level 1.</li>
-          </ul>
-          <h3><strong>High School Diploma — Mathematics & Informatics</strong></h3>
-          <p><em>Salamon Ernő High School, Gyergyószentmiklós</em> | 2016 – 2020</p>
-          <ul>
-            <li>Focused curriculum in mathematics and computer science.</li>
-            <li>Practical experience in programming and problem solving.</li>
-          </ul>
-        </section>
-
-      <section>
-        <h2>Profile</h2>
-        <div style="text-align: justify; text-justify: inter-word;">
-          <p>Vasi András was born in Gyergyószentmiklós in 2001 and grew up in Gyergyóafalu, Hargita County. From an early age, he developed a strong sense of community through his volunteer work at local cultural foundations and his active participation in a traditional folk dance group.</p>
-
-          <p>He has a deep interest in natural sciences, information technology, and emerging fields such as the Internet of Things (IoT), e-mobility, and renewable energy. Alongside his academic studies, he is engaged in research activities within the university framework, focusing on innovative and sustainable technological solutions.</p>
-
-          <p>András also possesses hands-on technical experience in installing water and electrical systems, complemented by practical knowledge of solar technologies and energy systems. His multidisciplinary background reflects a combination of analytical thinking, creativity, and a commitment to advancing modern technology with a focus on sustainability and efficiency.</p>
-        </div>
-
-       </section>
-
-      <section>
-        <h2>Skills</h2>
-        <p><strong>Languages:</strong> Hungarian, Romanian, English</p>
-        <p><strong>Programming:</strong> C, C++, Python</p>
-        <p><strong>Tools:</strong> GIT, Polarion, Synergy, PVCS</p>
-        <p><strong>Office:</strong> Proficient in Microsoft Word, Excel and PowerPoint</p>
-        <p><strong>3D Modeling and printing:</strong> Basic knowledge in Autodesk Inventor and experience in 3D printing</p>
-      </section>
-
-      <section>
-        <h2>Research</h2>
-        <p>Vein segmentation with infrared camera technologies.<br>
-        I currently work as a member of a team on an industrial project with support of <strong>Accenture</strong> in Marosvásárhely.</p>
-      </section>
-
-      <section>
-        <h2>Competitions</h2>
-        <p><strong>Revolutionize Industry with IoT:</strong> Academy and Masterclass – Home automatization competition organized by Accenture (2023 February, Marosvásárhely): <strong>1<sup>st</sup> placed</strong></p>
-
-        <p><strong>SapiLine Tracer:</strong> Line tracking robot design and building practice by Accenture (2024 April, Marosvásárhely): <strong>1<sup>st</sup> placed</strong></p>
-
-        <p><strong>Student conferences:</strong></p>
-        <ul>
-          <li>TDK – Sapientia EMTE (2023 May, Marosvásárhely): <strong>2<sup>nd</sup> placed</strong></li>
-          <li>MTDK – Hungarian Student Organization of Temesvár (2023 May, Temesvár): <strong>1<sup>st</sup> placed</strong></li>
-          <li>TDK – Sapientia EMTE (2024 April, Marosvásárhely): <strong>1<sup>st</sup> placed</strong></li>
-        </ul>
-      </section>
-    </main>
+  <!-- Photo -->
+  <div class="photo-ring">
+    <img src="photo.png" alt="Vasi András" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+    <i class="fa-solid fa-user photo-placeholder" style="display:none"></i>
   </div>
 
+  <!-- Name -->
+  <div class="sb-name">
+    <h1>Vasi András</h1>
+    <div class="job-title">System Automation Engineer</div>
+    <div class="job-sub">Accenture &nbsp;·&nbsp; Sapientia EMTE MSc</div>
+  </div>
+
+  <!-- Elérhetőség -->
+  <div class="sb-section">
+    <h2>Elérhetőség</h2><hr class="sb-line">
+    <div class="contact-item"><i class="fa-solid fa-phone"></i><span>+40770 &bull;&bull;&bull; &bull;&bull;&bull;&bull;</span></div>
+    <div class="contact-item"><i class="fa-solid fa-envelope"></i><span><a href="mailto:vasi.a.andras@gmail.com">vasi.a.andras@gmail.com</a></span></div>
+    <div class="contact-item"><i class="fa-solid fa-location-dot"></i><span>Gyergyóalfalu, Hargita m.<br>/ Marosvásárhely</span></div>
+    <div class="contact-item"><i class="fa-solid fa-flag"></i><span>Magyar, román állampolgár</span></div>
+    <div class="contact-item"><i class="fa-solid fa-cake-candles"></i><span>2001. december 8.</span></div>
+  </div>
+
+  <!-- Programozási készségek -->
+  <div class="sb-section">
+    <h2>Programozási készségek</h2><hr class="sb-line">
+    <div class="skill-item"><div class="skill-label">C / C++</div><div class="skill-track"><div class="skill-fill" style="width:90%"></div></div></div>
+    <div class="skill-item"><div class="skill-label">Python</div><div class="skill-track"><div class="skill-fill" style="width:85%"></div></div></div>
+    <div class="skill-item"><div class="skill-label">C# / .NET</div><div class="skill-track"><div class="skill-fill" style="width:80%"></div></div></div>
+    <div class="skill-item"><div class="skill-label">JavaScript / React</div><div class="skill-track"><div class="skill-fill" style="width:72%"></div></div></div>
+    <div class="skill-item"><div class="skill-label">Java / Android</div><div class="skill-track"><div class="skill-fill" style="width:68%"></div></div></div>
+    <div class="skill-item"><div class="skill-label">SQL</div><div class="skill-track"><div class="skill-fill" style="width:73%"></div></div></div>
+    <div class="skill-item"><div class="skill-label">Docker / CI-CD</div><div class="skill-track"><div class="skill-fill" style="width:70%"></div></div></div>
+    <div class="skill-item"><div class="skill-label">CUDA / ML</div><div class="skill-track"><div class="skill-fill" style="width:62%"></div></div></div>
+  </div>
+
+  <!-- Technológiák -->
+  <div class="sb-section">
+    <h2>Eszközök &amp; Technológiák</h2><hr class="sb-line">
+    <div class="tags">
+      <span class="tag">GIT</span><span class="tag">Docker</span><span class="tag">CI-CD</span>
+      <span class="tag">CUDA</span><span class="tag">IBM Synergy</span><span class="tag">Polarion</span>
+      <span class="tag">FastAPI</span><span class="tag">PHP</span><span class="tag">Raspberry Pi</span>
+      <span class="tag">Matlab</span><span class="tag">Linux</span><span class="tag">IMU</span>
+    </div>
+  </div>
+
+  <!-- Fejlesztői környezetek -->
+  <div class="sb-section">
+    <h2>Fejlesztői környezetek</h2><hr class="sb-line">
+    <div class="dev-envs">
+      Visual Studio &nbsp;·&nbsp; JetBrains IDEs<br>
+      Android Studio &nbsp;·&nbsp; Eclipse<br>
+      Matlab &nbsp;·&nbsp; Autodesk Inventor<br>
+      Oracle SQL &nbsp;·&nbsp; MS SQL Server
+    </div>
+  </div>
+
+  <!-- Nyelvtudás -->
+  <div class="sb-section">
+    <h2>Nyelvtudás</h2><hr class="sb-line">
+    <div class="lang-item">
+      <div class="lang-header"><span class="lang-name">Magyar</span><span class="lang-level">Anyanyelv</span></div>
+      <div class="lang-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div>
+    </div>
+    <div class="lang-item">
+      <div class="lang-header"><span class="lang-name">Angol</span><span class="lang-level">Középfok — LinguaSap</span></div>
+      <div class="lang-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot off"></div><div class="dot off"></div></div>
+    </div>
+    <div class="lang-item">
+      <div class="lang-header"><span class="lang-name">Román</span><span class="lang-level">Középfok — érettségi</span></div>
+      <div class="lang-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot off"></div><div class="dot off"></div></div>
+    </div>
+  </div>
+
+  <!-- Tanulmányok (összefoglaló) -->
+  <div class="sb-section">
+    <h2>Tanulmányok</h2><hr class="sb-line">
+    <div class="sb-edu-item">
+      <div class="sb-edu-deg">MSc — Számítógépes Irányítási R.</div>
+      <div class="sb-edu-inst">Sapientia EMTE, Marosvásárhely</div>
+      <div class="sb-edu-year">2024 — jelen</div>
+    </div>
+    <div class="sb-edu-item">
+      <div class="sb-edu-deg">MSc — II. szintű Pedagógia modul</div>
+      <div class="sb-edu-inst">Sapientia EMTE (tömbösítve)</div>
+      <div class="sb-edu-year">2025 — jelen</div>
+    </div>
+    <div class="sb-edu-item">
+      <div class="sb-edu-deg">BSc — Számítástechnika</div>
+      <div class="sb-edu-inst">Sapientia EMTE, Marosvásárhely</div>
+      <div class="sb-edu-year">2020 — 2024</div>
+    </div>
+  </div>
+
+  <!-- Érdeklődési kör -->
+  <div class="sb-section">
+    <h2>Érdeklődési kör</h2><hr class="sb-line">
+    <div class="interest-item"><i class="fa-solid fa-fingerprint"></i>Biometria &amp; számítógépes látás</div>
+    <div class="interest-item"><i class="fa-solid fa-microchip"></i>IoT &amp; beágyazott rendszerek</div>
+    <div class="interest-item"><i class="fa-solid fa-robot"></i>Mesterséges intelligencia</div>
+    <div class="interest-item"><i class="fa-solid fa-train"></i>Vasúti automatizálás</div>
+    <div class="interest-item"><i class="fa-solid fa-chalkboard"></i>Pedagógia &amp; oktatástechnika</div>
+    <div class="interest-item"><i class="fa-solid fa-book"></i>Tudományos kutatás</div>
+  </div>
+
+</aside>
+
+<!-- ═══════════════════════════ MAIN ══════════════════════════════ -->
+<main class="main">
+
+  <!-- ── Munkatapasztalat ──────────────────────────── -->
+  <div class="main-section">
+    <div class="section-heading"><i class="fa-solid fa-briefcase"></i>Munkatapasztalat</div>
+    <hr class="section-hr">
+
+    <div class="entry">
+      <div class="entry-head">
+        <span class="entry-title">Szoftverfejlesztő — System Automation Engineer</span>
+        <span class="entry-date">2024. jan. – jelen</span>
+      </div>
+      <div class="entry-org"><i class="fa-solid fa-building"></i>&ensp;Accenture Software Solutions&ensp;·&ensp;<i class="fa-solid fa-location-dot"></i>&ensp;Marosvásárhely, RO</div>
+      <div class="entry-desc">
+        <ul>
+          <li>Vasúti ipari automatizálási rendszerek fejlesztése és karbantartása C/C++ és C# alapokon (ipari beágyazott környezet).</li>
+          <li>Rendszerbiztonsági frissítések tervezése és megvalósítása vasúti szoftverinfrastruktúrán; tesztelés virtuális és fizikai környezetekben.</li>
+          <li>IoT mérőrendszerek fejlesztése IMU szenzoros adatfeldolgozással (Python, Visual Basic); műszaki dokumentáció írása.</li>
+          <li>Cloud engineering és DevOps feladatok: CI-CD pipeline-ok kezelése, IBM Rational Change / Synergy / Polarion eszközök alkalmazása.</li>
+        </ul>
+        <div class="entry-tech" style="margin-top:5pt"><i class="fa-solid fa-code"></i>&ensp;C, C++, C#, Python, Visual Basic, GIT, Docker, IBM Rational Change, Synergy, Polarion, Linux</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Tanulmányok ─────────────────────────────────── -->
+  <div class="main-section">
+    <div class="section-heading"><i class="fa-solid fa-graduation-cap"></i>Tanulmányok</div>
+    <hr class="section-hr">
+
+    <div class="entry">
+      <div class="entry-head">
+        <span class="entry-title">MSc — Számítógépes Irányítási Rendszerek</span>
+        <span class="entry-date">2024. szept. – jelen</span>
+      </div>
+      <div class="entry-org"><i class="fa-solid fa-university"></i>&ensp;Sapientia Erdélyi Magyar Tudományegyetem&ensp;·&ensp;Marosvásárhely, RO</div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <span class="entry-title">MSc — II. szintű Pedagógia modul (tömbösítve)</span>
+        <span class="entry-date">2025. szept. – jelen</span>
+      </div>
+      <div class="entry-org"><i class="fa-solid fa-university"></i>&ensp;Sapientia EMTE Tanárképző Intézet&ensp;·&ensp;Marosvásárhely, RO</div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <span class="entry-title">BSc — Számítástechnika</span>
+        <span class="entry-date">2020. szept. – 2024. júl.</span>
+      </div>
+      <div class="entry-org"><i class="fa-solid fa-university"></i>&ensp;Sapientia Erdélyi Magyar Tudományegyetem&ensp;·&ensp;Marosvásárhely, RO</div>
+      <div class="entry-desc">Záróvizsga projektje alapot adott a <em>Kézfej erezet szkenner</em> szakkönyv megírásához és a TDK-kutatási vonalhoz. Több TDK-díj és OTDK-jelölés a képzési időszak alatt.</div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <span class="entry-title">BSc — I. szintű Pedagógia modul</span>
+        <span class="entry-date">2020. szept. – 2022. júl.</span>
+      </div>
+      <div class="entry-org"><i class="fa-solid fa-university"></i>&ensp;Sapientia EMTE Tanárképző Intézet&ensp;·&ensp;Marosvásárhely, RO</div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <span class="entry-title">Érettségi — Matematika–Informatika tagozat</span>
+        <span class="entry-date">2016. szept. – 2020. jún.</span>
+      </div>
+      <div class="entry-org"><i class="fa-solid fa-university"></i>&ensp;Salamon Ernő Gimnázium&ensp;·&ensp;Gyergyószentmiklós, RO</div>
+    </div>
+  </div>
+
+  <!-- ── Projektek ───────────────────────────────────── -->
+  <div class="main-section">
+    <div class="section-heading"><i class="fa-solid fa-code"></i>Projektek</div>
+    <hr class="section-hr">
+
+    <div class="entry">
+      <div class="entry-head">
+        <span class="entry-title">Kézfej erezet szkenner rendszer</span>
+        <span class="entry-date">2022 – 2025</span>
+      </div>
+      <div class="entry-role">Tervező és fejlesztő (BSc kutatás → szakkönyv)</div>
+      <div class="entry-tech"><i class="fa-solid fa-code"></i>&ensp;Python · TensorFlow · OpenCV · Raspberry Pi · IR érzékelők · IoT</div>
+      <div class="entry-desc">
+        Infravörös fény segítségével a kézfej vénahálózatát láthatóvá tevő biometrikus azonosítórendszer — az ujjlenyomat-alapú azonosítók alternatívája. A vénák egyedi mintázatából MI-alapú képi adatbázis épül.
+        <ul>
+          <li>Szakkönyv publikációhoz és 2× TDK I. helyezéshez, OTDK-jelöléshez vezetett.</li>
+          <li>Kiadó: GlobeEdit, 2025 — ISBN 978-620-04-53242 (amazon.com).</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <span class="entry-title">Vasúti sín állapot diagnosztikai rendszer</span>
+        <span class="entry-date">2023 – 2024</span>
+      </div>
+      <div class="entry-role">Tervező és fejlesztő (TDK projekt — Csegezi-Balázs Csongorral)</div>
+      <div class="entry-tech"><i class="fa-solid fa-code"></i>&ensp;C/C++ · IMU szenzor · IoT · Raspberry Pi · adatfeldolgozás</div>
+      <div class="entry-desc">
+        Vasúti sín geometriai és dinamikus állapotát valós időben mérő és diagnosztizáló IoT rendszer, IMU szenzoros adatfeldolgozással.
+        <ul>
+          <li>XXIII. Kari TDK — Hardverfejlesztések szekció — <strong>I. helyezés</strong> (2024).</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <span class="entry-title">Spontán egérviselkedések videóelemző rendszere</span>
+        <span class="entry-date">2025 – 2026</span>
+      </div>
+      <div class="entry-role">Kutatói közreműködő (Domokos J., Molnár L., Kocsis K., Csaholczi Sz., Mody I.)</div>
+      <div class="entry-tech"><i class="fa-solid fa-code"></i>&ensp;Python · OpenCV · gépi tanulás · videóanalízis · viselkedéselemzés</div>
+      <div class="entry-desc">
+        Teljes szekvenciás spontán egérviselkedési minták videóinformáció-alapú automatikus elemzése neurológiai kutatási célra.
+        <ul>
+          <li>Elfogadott cikk: TEAM Conference 2026, Marosvásárhely.</li>
+          <li>XXV. Kari TDK <strong>I. helyezés + OTDK-jelölés</strong>; MTDK XXVII. III. helyezés + OTDK-jelölés.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <span class="entry-title">Mesterséges intelligencia által támogatott oktatási rendszer</span>
+        <span class="entry-date">2025 – 2026</span>
+      </div>
+      <div class="entry-role">Fejlesztő (MSc kutatási projekt)</div>
+      <div class="entry-tech"><i class="fa-solid fa-code"></i>&ensp;Python · MI/ML · oktatási platform · pedagógia</div>
+      <div class="entry-desc">
+        Személyre szabott MI-alapú tanulási asszisztens és adaptív oktatási rendszer, a Pedagógia MSc tanulmányokkal párhuzamosan fejlesztve.
+        <ul>
+          <li>MTDK XXVII. — <strong>Dicséret + OTDK-jelölés</strong> (2026).</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── TDK Konferenciák ────────────────────────────── -->
+  <div class="main-section">
+    <div class="section-heading"><i class="fa-solid fa-chalkboard-user"></i>TDK konferenciák</div>
+    <hr class="section-hr">
+
+    <div class="conf-entry">
+      <div class="conf-title">Kézfej erezet szkenner berendezés<span class="badge">II. helyezés</span></div>
+      <div class="conf-info">
+        <span class="conf-event"><i class="fa-solid fa-chalkboard-user"></i>&ensp;XXII. Kari TDK — Hardverfejlesztések és beágyazott rendszerek szekció, Sapientia EMTE</span>
+        <span class="conf-date">Marosvásárhely, 2023. máj. 5–6.</span>
+      </div>
+    </div>
+
+    <div class="conf-entry">
+      <div class="conf-title">Kézfej erezet szkenner<span class="badge">I. díj + OTDK-jelölés</span></div>
+      <div class="conf-info">
+        <span class="conf-event"><i class="fa-solid fa-chalkboard-user"></i>&ensp;MTDK XXIV. Műszaki Tudományos Diákköri Konferencia — Alkalmazott informatika szekció</span>
+        <span class="conf-date">Temesvár, 2023. máj. 19–21.</span>
+      </div>
+    </div>
+
+    <div class="conf-entry">
+      <div class="conf-title">Kézfej erezet adatgyűjtő rendszer</div>
+      <div class="conf-info">
+        <span class="conf-event"><i class="fa-solid fa-chalkboard-user"></i>&ensp;XXIII. Kari TDK — Informatika és szoftverfejlesztés I. szekció, Sapientia EMTE</span>
+        <span class="conf-date">Marosvásárhely, 2024. ápr. 26–27.</span>
+      </div>
+    </div>
+
+    <div class="conf-entry">
+      <div class="conf-title">Vasúti sín állapot diagnosztikai rendszer <em style="font-size:7.5pt;color:#95A5A6">(Csegezi-Balázs Csongorral)</em><span class="badge">I. helyezés</span></div>
+      <div class="conf-info">
+        <span class="conf-event"><i class="fa-solid fa-chalkboard-user"></i>&ensp;XXIII. Kari TDK — Hardverfejlesztések és beágyazott rendszerek I. szekció, Sapientia EMTE</span>
+        <span class="conf-date">Marosvásárhely, 2024. ápr. 26–27.</span>
+      </div>
+    </div>
+
+    <div class="conf-entry">
+      <div class="conf-title">Kézfej erezet adatgyűjtő rendszer</div>
+      <div class="conf-info">
+        <span class="conf-event"><i class="fa-solid fa-chalkboard-user"></i>&ensp;37. Országos Tudományos Diákköri Konferencia (OTDK '70) — Műszaki Tudományi szekció</span>
+        <span class="conf-date">Debrecen, 2025. ápr. 23.</span>
+      </div>
+    </div>
+
+    <div class="conf-entry">
+      <div class="conf-title">Mesterséges intelligencia által támogatott oktatási rendszer</div>
+      <div class="conf-info">
+        <span class="conf-event"><i class="fa-solid fa-chalkboard-user"></i>&ensp;XXV. Kari TDK — Informatika és szoftverfejlesztés II. szekció, Sapientia EMTE</span>
+        <span class="conf-date">Marosvásárhely, 2026. máj. 8–9.</span>
+      </div>
+    </div>
+
+    <div class="conf-entry">
+      <div class="conf-title">Spontán egérviselkedések teljes szekvenciáinak videóinformáció-alapú elemzése<span class="badge">I. helyezés + OTDK-jelölés</span></div>
+      <div class="conf-info">
+        <span class="conf-event"><i class="fa-solid fa-chalkboard-user"></i>&ensp;XXV. Kari TDK — Informatika és szoftverfejlesztés II. szekció, Sapientia EMTE</span>
+        <span class="conf-date">Marosvásárhely, 2026. máj. 8–9.</span>
+      </div>
+    </div>
+
+    <div class="conf-entry">
+      <div class="conf-title">Spontán egérviselkedések teljes szekvenciáinak videóinformáció-alapú elemzése<span class="badge">III. helyezés + OTDK-jelölés</span></div>
+      <div class="conf-info">
+        <span class="conf-event"><i class="fa-solid fa-chalkboard-user"></i>&ensp;MTDK XXVII. Erdélyi Műszaki TDK — Alkalmazott informatika szekció</span>
+        <span class="conf-date">Temesvár, 2026. máj. 15–17.</span>
+      </div>
+    </div>
+
+    <div class="conf-entry">
+      <div class="conf-title">Mesterséges intelligencia által támogatott oktatási rendszer<span class="badge">Dicséret + OTDK-jelölés</span></div>
+      <div class="conf-info">
+        <span class="conf-event"><i class="fa-solid fa-chalkboard-user"></i>&ensp;MTDK XXVII. Erdélyi Műszaki TDK — Alkalmazott informatika szekció</span>
+        <span class="conf-date">Temesvár, 2026. máj. 15–17.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Tudományos eredmények & Versenyeredmények ───── -->
+  <div class="main-section">
+    <div class="section-heading"><i class="fa-solid fa-award"></i>Tudományos eredmények &amp; Versenyeredmények</div>
+    <hr class="section-hr">
+
+    <!-- Szakkönyv -->
+    <div class="pub-type-label">Szakkönyv</div><hr class="pub-type-line">
+    <div class="entry">
+      <div class="entry-head">
+        <span class="entry-title">Kézfej erezet szkenner — Rendszer, mely az ujjlenyomat alapú azonosítók alternatívája lehet</span>
+        <span class="entry-date">2025</span>
+      </div>
+      <div class="entry-org">GlobeEdit &ensp;·&ensp; ISBN 978-620-04-53242 &ensp;·&ensp; amazon.com</div>
+      <div class="entry-desc">Infravörös fény segítségével a kézfej vénahálózatát láthatóvá tevő szkennert mutat be; a vénák egyedi mintázata biometrikus azonosításra alkalmas, a rendszer célja MI-feldolgozható képi adatbázis létrehozása.</div>
+    </div>
+
+    <!-- Konferencia cikk -->
+    <div class="pub-type-label">Konferencia előadás és publikáció</div><hr class="pub-type-line">
+    <div class="entry">
+      <div class="entry-head">
+        <span class="entry-title">Video-based analysis of full-sequence spontaneous mouse behavior</span>
+        <span class="entry-date">2026. szept. 10–12.</span>
+      </div>
+      <div class="entry-org">TEAM Conference — 12th International Scientific and Expert Conference of the International TEAM Society &ensp;·&ensp; Marosvásárhely, RO</div>
+      <div class="entry-desc">Szerzők: András VASI, József DOMOKOS, László MOLNÁR, Katalin KOCSIS, Szabolcs CSAHOLCZI, István MODY. (leadott és elfogadott dolgozat)</div>
+    </div>
+
+    <!-- Szakmai előadás -->
+    <div class="pub-type-label">Szakmai előadás</div><hr class="pub-type-line">
+    <div class="entry">
+      <div class="entry-head">
+        <span class="entry-title">Accenture Industry X: From Tools to Teammates</span>
+        <span class="entry-date">2026. ápr. 14.</span>
+      </div>
+      <div class="entry-org">Sapientia EMTE Marosvásárhelyi Kar (231-es terem) &ensp;·&ensp; Munkahelyi közreműködéssel</div>
+      <div class="entry-desc">Önálló szakmai előadás a mesterséges intelligencia reformjáról az ipar, a programozók és a nagyvállalatok mindennapi életében. Részletek: ms.sapientia.ro</div>
+    </div>
+
+    <!-- Kutatói közreműk. -->
+    <div class="pub-type-label">Kutatói közreműködés</div><hr class="pub-type-line">
+    <div class="entry">
+      <div class="entry-head">
+        <span class="entry-title">IoT és a vasút – Az infrastruktúra jövője?</span>
+        <span class="entry-date">2024. máj.</span>
+      </div>
+      <div class="entry-org">Today Software Magazine, 143. kiadás &ensp;·&ensp; todaysoftmag.ro</div>
+      <div class="entry-desc">Kutatócsapat tagjaként közreműközés az „IoT și calea ferată – Infrastructura viitorului?" c. szakcikk elkészítésében. Igazolja: dr. Sándor Hunor (Accenture Industry X, MES MOM Manager).</div>
+    </div>
+
+    <!-- Versenyeredmények -->
+    <div class="pub-type-label">Versenyeredmények</div><hr class="pub-type-line">
+
+    <div class="award-row">
+      <div class="award-head">
+        <span class="award-name">Revolutionize Industry with IoT: Academy and Masterclass</span>
+        <span class="award-prize"><strong>I. díj</strong> &ensp;— 2023. febr. 24–25.</span>
+      </div>
+      <div class="award-org"><i class="fa-solid fa-building"></i>&ensp;Accenture &ensp;·&ensp; IoT rendszertervezői és megvalósítási verseny</div>
+    </div>
+
+    <div class="award-row">
+      <div class="award-head">
+        <span class="award-name">SapiLineTracer powered by Accenture — robotépítő verseny</span>
+        <span class="award-prize"><strong>I. díj</strong> &ensp;— 2024. ápr. 16.</span>
+      </div>
+      <div class="award-org"><i class="fa-solid fa-building"></i>&ensp;Sapientia EMTE, Marosvásárhely &ensp;·&ensp; ügyességi futam</div>
+    </div>
+
+    <div class="award-row">
+      <div class="award-head">
+        <span class="award-name">VI. Innover — Innovációs Csapatverseny</span>
+        <span class="award-prize">Résztvevő &ensp;— 2024. máj. 13.</span>
+      </div>
+      <div class="award-org"><i class="fa-solid fa-building"></i>&ensp;Sapientia EMTE, Marosvásárhely</div>
+    </div>
+
+  </div>
+
+</main>
+</div><!-- .cv-wrap -->
 </body>
 </html>
